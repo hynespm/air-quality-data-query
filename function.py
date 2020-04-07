@@ -179,8 +179,6 @@ def process_data(file):
         print(f'Processed {line_count} lines.')
         # Remove corrupt data
         entries = clean_data(entries)
-        with open('data.json', 'w') as outfile:
-            json.dump(entries, outfile)
         return entries
 
 
@@ -189,23 +187,23 @@ def insert_data(data, url):
     try:
         conn = pymysql.connect(url,
                                user=rds_user_name, passwd=rds_password, db=db_name, connect_timeout=5)
-        rows = []
-        for entry in data:
-            row = ()
-            values = []
-            for attribute, value in entry.items():
-                values.append(value)
-            row = tuple(values)
-            rows.append(row)
-
-        cursor = conn.cursor()
-
-        query = "INSERT INTO airquality (date, time,co, tin_oxide, metanic_hydro, benzene_conc, titania, nox," \
-                "tungsten_oxide_nox,average_no2, tungsten_oxide_no2, indium_oxide, temp, relative_humidity," \
-                "absolute_humidity) VALUES " + ",".join(
-            "(%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, %s)" for _ in rows)
-        flattened_values = [item for sublist in rows for item in sublist]
-        cursor.execute(query, flattened_values)
+        conn.execute("create table airquality (id int auto_increment primary key, date varchar(255) not null, time varchar(255) not null, co varchar(255) not null, tin_oxide varchar(255) not null, metanic_hydro varchar(255) not null, benzene_conc varchar(255) not null, titania varchar(255) not null, nox varchar(255) not null, tungsten_oxide_nox varchar(255) not null, average_no2 varchar(255) not null, tungsten_oxide_no2 varchar(255) not null, indium_oxide varchar(255) not null, temp varchar(255) not null, relative_humidity varchar(255) not null, absolute_humidity varchar(255) not null) collate = utf8_bin;")
+        # rows = []        for entry in data:
+        #     row = ()
+        #     values = []
+        #     for attribute, value in entry.items():
+        #         values.append(value)
+        #     row = tuple(values)
+        #     rows.append(row)
+        #
+        # cursor = conn.cursor()
+        #
+        # query = "INSERT INTO airquality (date, time,co, tin_oxide, metanic_hydro, benzene_conc, titania, nox," \
+        #         "tungsten_oxide_nox,average_no2, tungsten_oxide_no2, indium_oxide, temp, relative_humidity," \
+        #         "absolute_humidity) VALUES " + ",".join(
+        #     "(%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, %s)" for _ in rows)
+        # flattened_values = [item for sublist in rows for item in sublist]
+        # cursor.execute(query, flattened_values)
 
         conn.commit()
     except Exception as e:
@@ -234,11 +232,12 @@ def main():
     create_database()
     print("Database created...")
     url = get_database_url()
+    print("Database url:" + url)
     # 2. Process data from CSV files
     entries = process_data(file_location + "AirQualityUCI.csv")
     print("The corrupt data has been removed. There is now {} entries".format(len(entries)))
     # 3. Insert the data into the database
-    #insert_data(entries, url)
+    insert_data(entries, url)
     # 4. Build web server
 
 

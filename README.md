@@ -7,7 +7,9 @@ Repository Structure
  * [README.md](README.md)
  * [data-set](data-set)
  * [function](function.py)
- * [src](src) - Angular Application to visualise the data 
+ * [app](app) - Angular Application to visualise the data 
+ * [database.template](database.template) - Database template
+ * [database-parameters.json](database-parameters.json) - Database template parameters
 
 ### Dataset - http://archive.ics.uci.edu/ml/datasets/air+quality
 
@@ -15,23 +17,23 @@ The dataset contains 9358 instances of hourly averaged responses from an array o
 This dataset can be used exclusively for research purposes. Commercial purposes are fully excluded.
 
 
-### Attribute Information:
+### Data Attribute Information:
 
-0 Date (DD/MM/YYYY)
-1 Time (HH.MM.SS)
-2 True hourly averaged concentration CO in mg/m^3 (reference analyzer)
-3 PT08.S1 (tin oxide) hourly averaged sensor response (nominally CO targeted)
-4 True hourly averaged overall Non Metanic HydroCarbons concentration in microg/m^3 (reference analyzer)
-5 True hourly averaged Benzene concentration in microg/m^3 (reference analyzer)
-6 PT08.S2 (titania) hourly averaged sensor response (nominally NMHC targeted)
-7 True hourly averaged NOx concentration in ppb (reference analyzer)
-8 PT08.S3 (tungsten oxide) hourly averaged sensor response (nominally NOx targeted)
-9 True hourly averaged NO2 concentration in microg/m^3 (reference analyzer)
-10 PT08.S4 (tungsten oxide) hourly averaged sensor response (nominally NO2 targeted)
-11 PT08.S5 (indium oxide) hourly averaged sensor response (nominally O3 targeted)
-12 Temperature in Â°C
-13 Relative Humidity (%)
-14 AH Absolute Humidity
+* 0 Date (DD/MM/YYYY)
+* 1 Time (HH.MM.SS)
+* 2 True hourly averaged concentration CO in mg/m^3 (reference analyzer)
+* 3 PT08.S1 (tin oxide) hourly averaged sensor response (nominally CO targeted)
+* 4 True hourly averaged overall Non Metanic HydroCarbons concentration in microg/m^3 (reference analyzer)
+* 5 True hourly averaged Benzene concentration in microg/m^3 (reference analyzer)
+* 6 PT08.S2 (titania) hourly averaged sensor response (nominally NMHC targeted)
+* 7 True hourly averaged NOx concentration in ppb (reference analyzer)
+* 8 PT08.S3 (tungsten oxide) hourly averaged sensor response (nominally NOx targeted)
+* 9 True hourly averaged NO2 concentration in microg/m^3 (reference analyzer)
+* 10 PT08.S4 (tungsten oxide) hourly averaged sensor response (nominally NO2 targeted)
+* 11 PT08.S5 (indium oxide) hourly averaged sensor response (nominally O3 targeted)
+* 12 Temperature in Â°C
+* 13 Relative Humidity (%)
+* 14 AH Absolute Humidity
 
 
 ## Process
@@ -40,4 +42,19 @@ These are the steps execute by this script
 
 1. Create an RDS MySQL instances in AWS
 2. Parse the dataset and insert into the database
-3. Create a UI that can be used to visualise and query the database
+3. Create an express app locally on port 8080 
+
+
+### Web application
+
+The express application exposes three endpoints for the following queries
+
+* /query_1 : Select the days with at least 1-hour NO2 average concentration greater than the [EU Air Quality Standard](http://ec.europa.eu/environment/air/quality/standards.htm) for NO2
+* /query_2 : Show total number of days matching the query requirements
+* /query_3 : Show also the full record for each day matching the query requirements
+
+
+### Requirements
+
+1. Sufficient permissions to interact with an AWS account of your choice
+2. Port 8080 to be open for traffic depending on where you deploy

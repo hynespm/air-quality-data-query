@@ -26,5 +26,23 @@
   {
     "ParameterKey": "DBPassword",
     "ParameterValue": "myname18"
+  },
+  {
+    "ParameterKey": "Environment",
+    "ParameterValue": "prod"
+  },
+  {
+    "ParameterKey": "DBPassword",
+    "ParameterValue": "myname18"
+  },
+  {
+    "ParameterKey": "CIDRRangeValue",
+    "ParameterValue": "0"
+  },
+  {
+    "ParameterKey": "VPCName",
+    "ParameterValue": "airqualityvpc"
   }
 ]
+
+
