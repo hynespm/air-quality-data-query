@@ -241,19 +241,26 @@ def clean_data(entries):
       clean_entries.append(entry)
   return clean_entries
 
+def line_prepender(filename, line):
+    with open(filename, 'r+') as f:
+      content = f.read()
+      f.seek(0, 0)
+      f.write(line.rstrip('\r\n') + '\n' + content)
 
 def main():
   # 1. Create RDS database
   create_database()
   print("Database created...")
   url = get_database_url()
+  statement = "const connection = mysql.createConnection({host:'"+ url+"',user:'"+ rds_user_name+"',password:'" + rds_password+"',database:'"+ db_name +"'});"
+  line_prepender("app/src/index.js",statement)
   print("Database url:" + url)
   # 2. Process data from CSV files
   entries = process_data(file_location + "AirQualityUCI.csv")
   print("The corrupt data has been removed. There is now {} entries".format(len(entries)))
   # 3. Insert the data into the database
   #create_table(url)
-  insert_data(entries, url)
+  #insert_data(entries, url)
   # 4. Build web server
 
 
