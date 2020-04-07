@@ -7,7 +7,7 @@ Repository Structure
  * [README.md](README.md)
  * [data-set](data-set)
  * [function](function.py)
- * [app](app) - Angular Application to visualise the data 
+ * [app](app) - Express app to display queried data 
  * [database.template](database.template) - Database template
  * [database-parameters.json](database-parameters.json) - Database template parameters
 
