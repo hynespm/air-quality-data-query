@@ -1,0 +1,209 @@
+{
+  'DBInstances': [
+    {
+      'DBInstanceIdentifier': 'airqualitydatabaseinstance',
+      'DBInstanceClass': 'db.m5.large',
+      'Engine': 'mysql',
+      'DBInstanceStatus': 'available',
+      'MasterUsername': 'admin',
+      'DBName': 'airqualitydatabase',
+      'Endpoint': {
+        'Address': 'airqualitydatabaseinsta
+        nce.chjnq0teubeh.eu-west-1.rds.amazonaws.com
+        ', '
+        Port
+        ': 3306, '
+        HostedZoneId
+        ': '
+        Z29XKXDKYMONMX
+        '}, '
+        AllocatedStorage
+        ': 5, '
+        InstanceCreateTime
+        ': datetime.datetime(2020, 4, 7, 7, 20, 44, 128000, tzinfo=tzutc()), '
+        PreferredBackupWindow
+        ': '
+        23: 58-00
+        :
+        28
+        ', '
+        BackupRetentionPe
+        riod
+        ': 1, '
+        DBSecurityGroups
+        ': [], '
+        VpcSecurityGroups
+        ': [{'
+        VpcSecurityGroupId
+        ': '
+        sg-0bb51ad1083f4591d
+        ', '
+        Status
+        ': '
+        active
+        '}], '
+        DBParameterGroups
+        ': [{'
+        DBParameterGroupName
+        ': '
+        default.mysql8.0
+        ', '
+        ParameterApplyStatus
+        ': '
+        in-sync
+        '}], '
+        AvailabilityZone
+        ': '
+        eu-west-1c
+        ', '
+        D
+        BSubnetGroup
+        ': {'
+        DBSubnetGroupName
+        ': '
+        default
+        ', '
+        DBSubnetGroupDescription
+        ': '
+        default
+        ', '
+        VpcId
+        ': '
+        vpc-033eec311cb6cc04f
+        ', '
+        SubnetGroupStatus
+        ': '
+        Complete
+        ', '
+        Subnets
+        ': [{'
+        SubnetIdentifier
+        ': '
+        subnet-0dd240d63778a2f1a
+        ', '
+        SubnetAvailabilityZone
+        ': {'
+        Name
+        ': '
+        eu-west-1b
+        '},
+        'SubnetStatus': 'Active'
+      },
+    {
+      'SubnetIdentifier': 'subnet-02c37da25cd5bd965',
+      'SubnetAvailabilityZone': {
+        'Name': 'eu-west-1a'
+      },
+      'SubnetStatus': 'Active'
+    },
+    {
+      'SubnetIdentifier': 'subnet-04987f1304b8e9da0',
+      'SubnetAvailabilityZone': {
+        'Name': 'eu-west-1c'
+      },
+      'SubnetStatus
+      ': '
+      Active
+      '}]}, '
+      PreferredMaintenanceWindow
+      ': '
+      fri: 05
+      :
+      27-fri: 05
+      :
+      57
+      ', '
+      PendingModifiedValues
+      ': {}, '
+      LatestRestorableTime
+      ': datetime.datetime(2020, 4, 7, 8, 30, tzinfo=tzutc()), '
+      MultiAZ
+      ': False, '
+      EngineVersion
+      ': '
+      8.0.16
+      ', '
+      AutoMinorVersionUpgrade
+      ': True, '
+      ReadReplic
+      aDBInstanceIdentifiers
+      ': [], '
+      LicenseModel
+      ': '
+      general-public-license
+      ', '
+      OptionGroupMemberships
+      ': [{'
+      OptionGroupName
+      ': '
+      default: mysql-8-0
+      ', '
+      Status
+      ': '
+      in-sync
+      '}], '
+      PubliclyAccessible
+      ': True, '
+      StorageType
+      ': '
+      standard
+      ', '
+      DbInstancePort
+      ': 0, '
+      StorageEncrypted
+      ': False,
+      'DbiResourceId': 'db-7Q5NAQ7DQMFMKGPPB4UJ6GFHKA',
+      'CACertificateIdentifier': 'rds-ca-2019',
+      'DomainMemberships': [],
+      'CopyTagsToSnapshot': False,
+      'MonitoringInterval': 0,
+      'DBInstanceArn': 'arn:aws:rds:eu-west-1:439363829178:db:airqualitydatabaseinstance',
+      'IAMDatab
+      aseAuthenticationEnabled
+      ': False, '
+      PerformanceInsightsEnabled
+      ': False, '
+      DeletionProtection
+      ': False, '
+      AssociatedRoles
+      ': []}], '
+      ResponseMetadata
+      ': {'
+      RequestId
+      ': '
+      8db68e6a-761c-494f-8ba5-5b08027cbe14
+      ', '
+      HTTPStatusCode
+      ': 200, '
+      HTTPHeaders
+      ': {'
+      x-amzn-requestid
+      ': '
+      8db68e
+      6a-761c-494f-8ba5-5b08027cbe14
+      ', '
+      content-type
+      ': '
+      text/xml
+      ', '
+      content-length
+      ': '
+      4535
+      ', '
+      vary
+      ': '
+      accept-encoding
+      ', '
+      date
+      ': '
+      Tue,
+      07
+      Apr
+      2020
+      08: 36
+      :
+      24
+      GMT
+      '}, '
+      RetryAttempts
+      ': 0}}
