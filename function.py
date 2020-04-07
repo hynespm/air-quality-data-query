@@ -25,6 +25,14 @@ rds_user_name = "admin"
 rds_password = "myname18"
 db_name = "airqualitydatabase"
 
+imports = [
+  "const express = require('express');",
+  "const cors = require('cors');",
+  "const bodyParser = require('body-parser');",
+  "const mysql = require('mysql');",
+  "const events = require('./events');"
+]
+
 
 def update_stack(params):
   print('Updating {}'.format(stack_name))
@@ -184,9 +192,10 @@ def process_data(file):
 
 def create_table(url):
   try:
-    conn = pymysql.connect(url,user=rds_user_name, passwd=rds_password, db=db_name, connect_timeout=5)
+    conn = pymysql.connect(url, user=rds_user_name, passwd=rds_password, db=db_name, connect_timeout=5)
     cursor = conn.cursor()
-    cursor.execute("create table airquality (id int auto_increment primary key, date varchar(255) not null, time varchar(255) not null, co varchar(255) not null, tin_oxide varchar(255) not null, metanic_hydro varchar(255) not null, benzene_conc varchar(255) not null, titania varchar(255) not null, nox varchar(255) not null, tungsten_oxide_nox varchar(255) not null, average_no2 varchar(255) not null, tungsten_oxide_no2 varchar(255) not null, indium_oxide varchar(255) not null, temp varchar(255) not null, relative_humidity varchar(255) not null, absolute_humidity varchar(255) not null);")
+    cursor.execute(
+      "create table airquality (id int auto_increment primary key, date varchar(255) not null, time varchar(255) not null, co varchar(255) not null, tin_oxide varchar(255) not null, metanic_hydro varchar(255) not null, benzene_conc varchar(255) not null, titania varchar(255) not null, nox varchar(255) not null, tungsten_oxide_nox varchar(255) not null, average_no2 varchar(255) not null, tungsten_oxide_no2 varchar(255) not null, indium_oxide varchar(255) not null, temp varchar(255) not null, relative_humidity varchar(255) not null, absolute_humidity varchar(255) not null);")
     conn.commit()
   except Exception as e:
     logger.error("ERROR: Unexpected error: Could not connect to MySql instance.")
@@ -241,26 +250,30 @@ def clean_data(entries):
       clean_entries.append(entry)
   return clean_entries
 
+
 def line_prepender(filename, line):
-    with open(filename, 'r+') as f:
-      content = f.read()
-      f.seek(0, 0)
-      f.write(line.rstrip('\r\n') + '\n' + content)
+  with open(filename, 'r+') as f:
+    content = f.read()
+    f.seek(0, 0)
+    f.write(line.rstrip('\r\n') + '\n' + content)
+
 
 def main():
   # 1. Create RDS database
   create_database()
   print("Database created...")
   url = get_database_url()
-  statement = "const connection = mysql.createConnection({host:'"+ url+"',user:'"+ rds_user_name+"',password:'" + rds_password+"',database:'"+ db_name +"'});"
-  line_prepender("app/src/index.js",statement)
   print("Database url:" + url)
+  statement = "const connection = mysql.createConnection({host:'" + url + "',user:'" + rds_user_name + "',password:'" + rds_password + "',database:'" + db_name + "'});"
+  imports.insert(0,statement)
+  for line in imports:
+    line_prepender("app/src/index.js", line)
   # 2. Process data from CSV files
   entries = process_data(file_location + "AirQualityUCI.csv")
   print("The corrupt data has been removed. There is now {} entries".format(len(entries)))
   # 3. Insert the data into the database
-  #create_table(url)
-  #insert_data(entries, url)
+  # create_table(url)
+  # insert_data(entries, url)
   # 4. Build web server
 
 
