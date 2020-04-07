@@ -1,10 +1,3 @@
-const events = require('./events');
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const express = require('express');
-const connection = mysql.createConnection({host:'airqualitydatabaseinstance.chjnq0teubeh.eu-west-1.rds.amazonaws.com',user:'admin',password:'myname18',database:'airqualitydatabase'});
-
 
 connection.connect();
 const port = process.env.PORT || 8080;

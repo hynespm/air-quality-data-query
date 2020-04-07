@@ -273,8 +273,8 @@ def main():
   entries = process_data(file_location + "AirQualityUCI.csv")
   print("The corrupt data has been removed. There is now {} entries".format(len(entries)))
   # 3. Insert the data into the database
-  # create_table(url)
-  # insert_data(entries, url)
+  create_table(url)
+  insert_data(entries, url)
   # 4. Run the Express server
   os.system("node app/src/index.js")
 
