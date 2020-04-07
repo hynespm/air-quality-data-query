@@ -10,6 +10,7 @@ from venv import logger
 import boto3
 import botocore
 import pymysql
+import os
 
 VERBOSE = 1
 SLEEP = 2
@@ -274,7 +275,8 @@ def main():
   # 3. Insert the data into the database
   # create_table(url)
   # insert_data(entries, url)
-  # 4. Build web server
+  # 4. Run the Express server
+  os.system("node app/src/index.js")
 
 
 if __name__ == '__main__':
