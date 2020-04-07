@@ -58,3 +58,5 @@ The express application exposes three endpoints for the following queries
 
 1. Sufficient permissions to interact with an AWS account of your choice
 2. Port 8080 to be open for traffic depending on where you deploy
+3. Ensure node is installed and the following dependencies installed  via this command 
+    * npm install --save-exact express cors mysql
