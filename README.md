@@ -49,9 +49,9 @@ These are the steps execute by this script
 
 The express application exposes three endpoints for the following queries
 
-* /query_1 : Select the days with at least 1-hour NO2 average concentration greater than the [EU Air Quality Standard](http://ec.europa.eu/environment/air/quality/standards.htm) for NO2
-* /query_2 : Show total number of days matching the query requirements
-* /query_3 : Show also the full record for each day matching the query requirements
+* [localhost:8080/query_1](localhost:8080/query_1) : Select the days with at least 1-hour NO2 average concentration greater than the [EU Air Quality Standard](http://ec.europa.eu/environment/air/quality/standards.htm) for NO2
+* [localhost:8080/query_2](localhost:8080/query_2) : Show total number of days matching the query requirements
+* [localhost:8080/query_3](localhost:8080/query_3): Show also the full record for each day matching the query requirements
 
 
 ### Requirements
