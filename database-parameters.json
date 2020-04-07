@@ -1,6 +1,30 @@
 [
-    {
-      "ParameterKey": "SharedServicesAccount",
-      "ParameterValue": "836528565845"
-    }
+  {
+    "ParameterKey": "DBInstanceID",
+    "ParameterValue": "airqualitydatabaseinstance"
+  },
+  {
+    "ParameterKey": "DBName",
+    "ParameterValue": "airqualitydatabase"
+  },
+  {
+    "ParameterKey": "DBInstanceClass",
+    "ParameterValue": "db.m5.large"
+  },
+  {
+    "ParameterKey": "DBInstanceClass",
+    "ParameterValue": "db.m5.large"
+  },
+  {
+    "ParameterKey": "DBAllocatedStorage",
+    "ParameterValue": "5"
+  },
+  {
+    "ParameterKey": "DBUsername",
+    "ParameterValue": "admin"
+  },
+  {
+    "ParameterKey": "DBPassword",
+    "ParameterValue": "myname18"
+  }
 ]
